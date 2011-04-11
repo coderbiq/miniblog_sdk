@@ -3,7 +3,7 @@
 namespace Ebsdk;
 
 /**
- * 接口 Client 定义微博客户端的公共接口
+ * 类 Exception 提供对异常的封装
  * 
  * @package Ebsdk
  * @version 0.1
@@ -11,7 +11,8 @@ namespace Ebsdk;
  * @author elvis <elvis@dwenzi.com> 
  * @license New BSD License  {@link http://creativecommons.org/licenses/by-nc-sa/2.5/cn/}
  */
-interface Client
+class Exception extends \Exception
 {
-    public function __construct(Array $_config);
+    # 定义适配器未找到异常
+    const ADAPTER_NOT_FOUND = 1;
 }
