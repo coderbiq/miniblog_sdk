@@ -31,8 +31,8 @@ abstract class Base implements \Ebsdk\Client
             );
             $config = array_merge($base_config, $_config);
 
-            $ro = new \ReflectionClass($this->_getAuthClassName());
-            $this->_objects['oauth'] = $ro->newInstance($config);
+            $rc = new \ReflectionClass($this->_getAuthClassName());
+            $this->_objects['oauth'] = $rc->newInstance($config);
         }
 
         return $this->_objects['oauth'];
