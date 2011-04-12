@@ -1,0 +1,15 @@
+<phpunit>
+    <logging>
+        <log 
+            type="coverage-html" 
+            target="./../docs/xdebug" 
+            charset="utf-8" 
+            yui="true" 
+            highlight="false" 
+            lowUpperBound="35" 
+            highLowerBound="70" />
+        <log
+            type="testdox-html"
+            target="./../docs/testdox.html" />
+    </logging>
+</phpunit>
