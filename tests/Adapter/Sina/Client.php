@@ -1,10 +1,11 @@
 <?php
 # 定义命名空间
-namespace Test\Adapter\Tencent;
+namespace Test\Adapter\Sina;
 use \Ebsdk\Adapter\Sina as Sina;
 
 # 包含依赖文件
 require_once __DIR__ . '/../../../application/Adapter/Sina/Client.php';
+require_once __DIR__ . '/../../Client/Base.php';
 
 /**
  * 类 TestClient 提供对腾讯微博客户端的单元测试
@@ -15,24 +16,20 @@ require_once __DIR__ . '/../../../application/Adapter/Sina/Client.php';
  * @author elvis <elvis@dwenzi.com> 
  * @license New BSD License  {@link http://creativecommons.org/licenses/by-nc-sa/2.5/cn/}
  */
-class TestClient extends \PHPUnit_Framework_TestCase
+class TestClient extends \Test\Client\Base
 {
     protected $_config = array(
         'app_key' => '',
         'app_secret' => '',
     );
 
-    /**
-     * 方法 testGetAuth 测试获取授权接口对象
-     * 
-     * @access public
-     * @return void
-     */
-    public function testGetAuth()
+    protected function _getClient()
     {
-        $client = new Sina\Client($this->_config);
-        $auth = $client->getAuth();
+        return new Sina\Client($this->_config);
+    }
 
-        $this->assertType('\Ebsdk\Adapter\Sina\Auth', $auth);
+    protected function _assertAuthObject($_auth)
+    {
+        $this->assertType('\Ebsdk\Adapter\Sina\Auth', $_auth);
     }
 }

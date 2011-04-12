@@ -5,6 +5,7 @@ use \Ebsdk\Adapter\Tencent as Tencent;
 
 # 包含依赖文件
 require_once __DIR__ . '/../../../application/Adapter/Tencent/Client.php';
+require_once __DIR__ . '/../../Client/Base.php';
 
 /**
  * 类 TestClient 提供对腾讯微博客户端的单元测试
@@ -15,24 +16,20 @@ require_once __DIR__ . '/../../../application/Adapter/Tencent/Client.php';
  * @author elvis <elvis@dwenzi.com> 
  * @license New BSD License  {@link http://creativecommons.org/licenses/by-nc-sa/2.5/cn/}
  */
-class TestClient extends \PHPUnit_Framework_TestCase
+class TestClient extends \Test\Client\Base
 {
     protected $_config = array(
         'app_key' => '',
         'app_secret' => '',
     );
 
-    /**
-     * 方法 testGetAuth 测试获取授权接口对象
-     * 
-     * @access public
-     * @return void
-     */
-    public function testGetAuth()
+    protected function _getClient()
     {
-        $client = new Tencent\Client($this->_config);
-        $auth = $client->getAuth();
+        return new Tencent\Client($this->_config);
+    }
 
-        $this->assertType('\Ebsdk\Adapter\Tencent\Auth', $auth);
+    protected function _assertAuthObject($_auth)
+    {
+        $this->assertType('\Ebsdk\Adapter\Tencent\Auth', $_auth);
     }
 }
