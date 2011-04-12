@@ -1,6 +1,6 @@
 <?php
 # 定义命名空间
-namespace Ebsdk\Auth
+namespace Ebsdk\Auth;
 
 /**
  * 接口 Oauth 定义oauth授权接口的公共行为
