@@ -4,6 +4,7 @@ namespace Test\Client;
 
 # 包含依赖文件
 require_once __DIR__ . '/../../application/Auth.php';
+require_once __DIR__ . '/../../application/Auth/Oauth.php';
 
 /**
  * 类 Base 提供对微博客户端的基本测试
@@ -29,6 +30,7 @@ class Base extends \PHPUnit_Framework_TestCase
         $auth = $client->getAuth();
 
         $this->assertType('\Ebsdk\Auth', $auth);
+        $this->assertType('\Ebsdk\Auth\Oauth', $auth);
         $this->_assertAuthObject($auth);
     }
 }
