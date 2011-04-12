@@ -4,7 +4,7 @@ namespace Ebsdk\Adapter\Sina;
 
 # 包含依赖文件
 require_once __DIR__ . '/../../Client/Base.php';
-require_once __DIR__ . '/Auth.php';
+require_once __DIR__ . '/Auth/Oauth.php';
 
 /**
  * 类 Client 封装新浪微博客户端
@@ -19,6 +19,6 @@ class Client extends \Ebsdk\Client\Base
 {
     protected function _getAuthClassName()
     {
-        return __NAMESPACE__ . '\\Auth';
+        return __NAMESPACE__ . '\\Auth\\Oauth';
     }
 }
