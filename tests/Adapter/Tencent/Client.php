@@ -30,6 +30,6 @@ class Client extends \Test\Client\Base
 
     protected function _assertAuthObject($_auth)
     {
-        $this->assertType('\Ebsdk\Adapter\Tencent\Auth', $_auth);
+        $this->assertType('\Ebsdk\Adapter\Tencent\Auth\Oauth', $_auth);
     }
 }
