@@ -13,5 +13,14 @@ namespace Ebsdk;
  */
 interface Client
 {
+    /**
+     * 方法 getAuth 获取授受API接口对象
+     * 
+     * @param string $_type 
+     * @access public
+     * @return \Ebsdk\Auth
+     */
+    public function getAuth($_type = 'oauth');
+
     public function __construct(Array $_config);
 }
