@@ -16,7 +16,7 @@ require_once __DIR__ . '/../../Client/Base.php';
  * @author elvis <elvis@dwenzi.com> 
  * @license New BSD License  {@link http://creativecommons.org/licenses/by-nc-sa/2.5/cn/}
  */
-class TestClient extends \Test\Client\Base
+class Client extends \Test\Client\Base
 {
     protected $_config = array(
         'app_key' => '',
