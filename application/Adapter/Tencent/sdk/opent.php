@@ -5,7 +5,7 @@
  * @return
  * @author tuguska
  */
-require_once 'oauth.php';
+require_once __DIR__ . '/../../../Auth/OauthLib.php';
 
 define( "MB_RETURN_FORMAT" , 'json' );
 define( "MB_API_HOST" , 'open.t.qq.com' );
