@@ -4,31 +4,20 @@ namespace Ebsdk\Adapter\Sina\Auth;
 
 # 包含依赖文件
 require_once __DIR__ . '/../../../Auth.php';
-require_once __DIR__ . '/../../../Auth/Oauth.php';
+require_once __DIR__ . '/../../../Auth/BaseOauth.php';
+require_once __DIR__ . '/../sdk/weibodemo/weibooauth.php';
 
-class Oauth implements \Ebsdk\Auth, \Ebsdk\Auth\Oauth
+class Oauth extends \Ebsdk\Auth\BaseOauth implements \Ebsdk\Auth
 {
-    public function getRequestToken($_callback)
-    {
-    }
-
-    public function getAuthorizeURL($_token, $_sign_in_with_Weibo = TRUE , $_url)
-    {
-    }
-
-    public function getAccessToken($_oauth_verifier = FALSE, $_oauth_token = false)
-    {
-    }
-
-    public function setToken($_token)
-    {
-    }
-
-    public function setTokenSecret($_token_secret)
-    {
-    }
-
     public function __construct(Array $_config)
     {
+        if(isset($_config['driver']))
+            $this->_driver = $_config['driver'];
+
+        else
+        {
+            $this->_driver = new \WeiboOauth(
+                $_config['app_key'], $_config['app_secret']);
+        }
     }
 }
