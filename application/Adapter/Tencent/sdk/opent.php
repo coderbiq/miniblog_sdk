@@ -7,12 +7,15 @@
  */
 require_once 'oauth.php';
 
+define( "MB_RETURN_FORMAT" , 'json' );
+define( "MB_API_HOST" , 'open.t.qq.com' );
+
 class MBOpenTOAuth {
 	public $host = 'http://open.t.qq.com/';
 	public $timeout = 30; 
 	public $connectTimeout = 30;
 	public $sslVerifypeer = FALSE; 
-	public $format = MB_RETURN_FORMAT;
+	public $format;
 	public $decodeJson = TRUE; 
 	public $httpInfo; 
 	public $userAgent = 'oauth test'; 
@@ -225,13 +228,13 @@ class MBOpenTOAuth {
 			}
 			fclose($fp);
 			if(strrpos($ret,'Transfer-Encoding: chunked')){
-				$info = split("\r\n\r\n",$ret);
-				$response = split("\r\n",$info[1]);
+				$info = preg_split("/\r\n\r\n/",$ret);
+				$response = preg_split("/\r\n/",$info[1]);
 				$t = array_slice($response,1,-1);
 
 				$returnInfo = implode('',$t);
 			}else{
-				$response = split("\r\n\r\n",$ret);
+				$response = preg_split("/\r\n\r\n/",$ret);
 				$returnInfo = $response[1];
 			}
 			//转成utf-8编码
