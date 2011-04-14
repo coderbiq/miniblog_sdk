@@ -1,4 +1,17 @@
-<phpunit>
+<phpunit 
+    verbose = "true"
+    colors = "true">
+    <testsuites>
+        <testsuite name="ClientFactory">
+            <file>ClientFactory.php</file>
+        </testsuite>
+        <testsuite name="ClientTest">
+            <file>Client/TestAllClient.php</file>
+        </testsuite>
+        <testsuite name="AuthTest">
+            <file>Auth/TestAllOauth.php</file>
+        </testsuite>
+    </testsuites>
     <logging>
         <log 
             type="coverage-html" 
