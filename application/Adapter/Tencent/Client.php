@@ -5,6 +5,7 @@ namespace Ebsdk\Adapter\Tencent;
 # 包含依赖文件
 require_once __DIR__ . '/../../Client/Base.php';
 require_once __DIR__ . '/Auth/Oauth.php';
+require_once __DIR__ . '/TimeLine.php';
 
 /**
  * 类 Client 封装腾讯微博客户端
@@ -17,8 +18,15 @@ require_once __DIR__ . '/Auth/Oauth.php';
  */
 class Client extends \Ebsdk\Client\Base
 {
-    protected function _getAuthClassName()
+    public function auth($_type = 'oauth', $_config = array())
     {
-        return __NAMESPACE__ . '\\Auth\\Oauth';
+        return $this->_auth(
+            __NAMESPACE__ . '\\Auth\\Oauth', $_type, $_config
+        );
+    }
+
+    public function timeLine(Array $_config = array())
+    {
+        return $this->_timeLine(__NAMESPACE__ . '\\TimeLine', $_config);
     }
 }

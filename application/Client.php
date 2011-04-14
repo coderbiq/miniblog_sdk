@@ -21,7 +21,15 @@ interface Client
      * @access public
      * @return \Ebsdk\Auth
      */
-    public function getAuth($_type = 'oauth', $_config = array());
+    public function auth($_type = 'oauth', $_config = array());
+
+    /**
+     * 方法 timeLine 获取时间线接口对象
+     * 
+     * @access public
+     * @return \Ebsdk\TimeLine
+     */
+    public function timeLine(Array $_config = array());    
 
     public function __construct(Array $_config);
 }
