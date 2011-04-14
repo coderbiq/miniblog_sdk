@@ -18,18 +18,19 @@ require_once __DIR__ . '/../../Client/Base.php';
  */
 class Client extends \Test\Client\Base
 {
-    protected $_config = array(
-        'app_key' => '',
-        'app_secret' => '',
-    );
-
     protected function _getClient()
     {
-        return new Sina\Client($this->_config);
+        $config = include __DIR__ . '/../../Config.php';
+
+        return new Sina\Client($config['Sina']);
     }
 
     protected function _assertAuthObject($_auth)
     {
-        $this->assertType('\Ebsdk\Adapter\Sina\Auth\Oauth', $_auth);
+        $this->assertInstanceOf('\Ebsdk\Adapter\Sina\Auth\Oauth', $_auth);
+    }
+
+    protected function _assertTimeLine($_timeline)
+    {
     }
 }

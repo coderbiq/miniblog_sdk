@@ -27,10 +27,20 @@ class Base extends \PHPUnit_Framework_TestCase
     {
         $client = $this->_getClient();
 
-        $auth = $client->getAuth();
+        $auth = $client->auth();
 
-        $this->assertType('\Ebsdk\Auth', $auth);
-        $this->assertType('\Ebsdk\Auth\Oauth', $auth);
+        $this->assertInstanceOf('\Ebsdk\Auth', $auth);
+        $this->assertInstanceOf('\Ebsdk\Auth\Oauth', $auth);
         $this->_assertAuthObject($auth);
+    }
+
+    public function testTimeLine()
+    {
+        $client = $this->_getClient();
+
+        $time_line = $client->timeLine();
+
+        $this->assertInstanceOf('\Ebsdk\TimeLine', $time_line);
+        $this->_assertTimeLine($time_line);
     }
 }

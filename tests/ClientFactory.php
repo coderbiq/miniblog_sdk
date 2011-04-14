@@ -27,8 +27,8 @@ class ClientFactory extends \PHPUnit_Framework_TestCase
         $client = \Ebsdk\ClientFactory::instance()->factory(
             'Tencent', array('app_key' => '', 'app_secret' => ''));
 
-        $this->assertType('\Ebsdk\Adapter\Tencent\Client', $client);
-        $this->assertType('\ebsdk\Client', $client);
+        $this->assertInstanceOf('\Ebsdk\Adapter\Tencent\Client', $client);
+        $this->assertInstanceOf('\ebsdk\Client', $client);
     }
 
     /**

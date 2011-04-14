@@ -36,7 +36,7 @@ class Oauth extends \PHPUnit_Framework_TestCase
     {
         $auth = new Auth\Oauth(array('app_key' => '', 'app_secret' => ''));
 
-        $this->assertType('WeiboOauth', $auth->getDriver());
+        $this->assertInstanceOf('WeiboOauth', $auth->getDriver());
     }
 
     public function testSetToken()
@@ -45,7 +45,7 @@ class Oauth extends \PHPUnit_Framework_TestCase
 
         $auth->setToken('', '');
 
-        $this->assertType('OauthConsumer', $auth->getDriver()->token);
+        $this->assertInstanceOf('OauthConsumer', $auth->getDriver()->token);
     }
 
     public function getRequestToken($_callback)

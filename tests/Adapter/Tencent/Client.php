@@ -18,18 +18,19 @@ require_once __DIR__ . '/../../Client/Base.php';
  */
 class Client extends \Test\Client\Base
 {
-    protected $_config = array(
-        'app_key' => '',
-        'app_secret' => '',
-    );
-
     protected function _getClient()
     {
-        return new Tencent\Client($this->_config);
+        $config = include __DIR__ . '/../../Config.php';
+
+        return new Tencent\Client($config['Tencent']);
     }
 
     protected function _assertAuthObject($_auth)
     {
-        $this->assertType('\Ebsdk\Adapter\Tencent\Auth\Oauth', $_auth);
+        $this->assertInstanceOf('\Ebsdk\Adapter\Tencent\Auth\Oauth', $_auth);
+    }
+
+    protected function _assertTimeline($_timeline)
+    {
     }
 }
